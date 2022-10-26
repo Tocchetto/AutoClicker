@@ -8,13 +8,9 @@ HotKeySet("x", "DefineClickPos")
 HotKeySet("o", "SpeedUp")
 HotKeySet("l", "SpeedDown")
 
-Global $bContinue = False
-Global $arClickPos[2]
-Global $nDelay = 20
-
 Func Pause()
    ConsoleLog("Pause was pressed.")
-   $bContinue = False
+   $g_bContinue = False
 EndFunc
 
 Func Stop()
@@ -23,52 +19,67 @@ Func Stop()
 EndFunc
 
 Func SpeedUp()
-  ConsoleLog("Speed up button pressed. Current delay: " & $nDelay)
-	$nDelay = $nDelay + 10
+	$g_iDelay = $g_iDelay + 10
+  ConsoleLog("Speed up button pressed. Current delay: " & $g_iDelay)	
+	
+	GUICtrlSetData($lblCoordinates, $g_sXYPosLbl & " " & $g_iDelay)
 EndFunc
 
 Func SpeedDown()
-	$nDelay = $nDelay - 10
-	ConsoleLog("Speed down was pressed. Current delay: " & $nDelay)
+	if $g_iDelay - 10 >= 0 Then	
+		$g_iDelay = $g_iDelay - 10
+	Else
+		ConsoleLog("Can't set delay below 0.")
+		GUICtrlSetData($lblCoordinates, $g_sXYPosLbl & " " & $g_iDelay)
+		GUICtrlSetColor($lblCoordinates, 0xFF0000)
+		Sleep(100)
+		GUICtrlSetColor($lblCoordinates, 0x000000)
+	EndIf		
+	ConsoleLog("Speed down was pressed. Current delay: " & $g_iDelay)
+	
+	GUICtrlSetData($lblCoordinates, $g_sXYPosLbl & " " & $g_iDelay)
 EndFunc
 
 Func DefineClickPos()
-	$arClickPos = MouseGetPos()
-	ConsoleLog("Defining click position. Position picked: x(" & $arClickPos[0] & "), y(" & $arClickPos[1] & ").")
+	$g_aClickPos = MouseGetPos()
+	ConsoleLog("Defining click position. Position picked: x(" & $g_aClickPos[0] & "), y(" & $g_aClickPos[1] & ").")
 EndFunc
 
 Func AutoClick()
 	ConsoleLog("AutoClick started!")
-	$bContinue = True
-	While $bContinue
-		MouseClick("left", $arClickPos[0], $arClickPos[1])
-		Sleep($nDelay)
+	$g_bContinue = True
+	While $g_bContinue
+		MouseClick("left", $g_aClickPos[0], $g_aClickPos[1])
+		Sleep($g_iDelay)
 	WEnd
 
 EndFunc
 
 Func OpenHelpWindow()
-	$strMsg = ""
-	$strMsg = $strMsg & "Press 'z' to Pause the script;" & @CRLF
-	$strMsg = $strMsg & "Press 'c' to start clicking;" & @CRLF
-	$strMsg = $strMsg & "Press 'x' to define the cursor position;" & @CRLF
-	$strMsg = $strMsg & "Press 'o' to increase clicks per second;" & @CRLF
-	$strMsg = $strMsg & "Press 'l' to reduce clicks per second;" & @CRLF
-	$strMsg = $strMsg & "Press ESC to halt the program." & @CRLF	
+	$sMsg = ""
+	$sMsg = $sMsg & "Press 'z' to Pause the script;" & @CRLF
+	$sMsg = $sMsg & "Press 'c' to start clicking;" & @CRLF
+	$sMsg = $sMsg & "Press 'x' to define the cursor position;" & @CRLF
+	$sMsg = $sMsg & "Press 'o' to increase clicks per second;" & @CRLF
+	$sMsg = $sMsg & "Press 'l' to reduce clicks per second;" & @CRLF
+	$sMsg = $sMsg & "Press ESC to halt the program." & @CRLF	
 	
-	MsgBox(64, "HotKeys", $strMsg)	
+	MsgBox(64, "HotKeys", $sMsg)	
 EndFunc
 
 While 1
-	$nMsg = GUIGetMsg()
-	Switch $nMsg
+	$iMsg = GUIGetMsg()
+	Switch $iMsg
 		Case $GUI_EVENT_CLOSE
 			Exit
 		Case $btnStart
 			ConsoleLog("Start button pressed.")
+			AutoClick()
 		Case $btnHelp
 			ConsoleLog("Help button pressed.")
 			OpenHelpWindow()
-
+		Case $btnPause
+			ConsoleLog("Pause button pressed.")
+			Pause()
 	EndSwitch
 WEnd

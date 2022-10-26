@@ -63,9 +63,9 @@
 		<object type="TAEdit" name="console">
 			<properties>
 				<property name="Left" vt="Int8">8</property>
-				<property name="Top" vt="Int8">8</property>
+				<property name="Top" vt="Int8">24</property>
 				<property name="Width" vt="Int16">329</property>
-				<property name="Height" vt="Int16">225</property>
+				<property name="Height" vt="Int16">201</property>
 				<property name="Lines.Strings" vt="List">
 					<list>
 						<li vt="String">console</li>
@@ -103,7 +103,7 @@
 			<properties>
 				<property name="Left" vt="Int8">8</property>
 				<property name="Top" vt="Int16">236</property>
-				<property name="Width" vt="Int8">26</property>
+				<property name="Width" vt="Int8">114</property>
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">X/Y:</property>
 				<property name="TabOrder" vt="Int8">4</property>
@@ -118,10 +118,73 @@
 			<properties>
 				<property name="Left" vt="Int8">8</property>
 				<property name="Top" vt="Int16">252</property>
-				<property name="Width" vt="Int8">58</property>
+				<property name="Width" vt="Int8">114</property>
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">Click delay:</property>
 				<property name="TabOrder" vt="Int8">5</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1342308608</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components/>
+		</object>
+		<object type="TALabel" name="lblPause">
+			<properties>
+				<property name="Left" vt="Int8">64</property>
+				<property name="Top" vt="Int8">4</property>
+				<property name="Width" vt="Int8">48</property>
+				<property name="Height" vt="Int8">17</property>
+				<property name="Caption" vt="String">z - Pause</property>
+				<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-12</property>
+				<property name="Font.Name" vt="String">MS Sans Serif</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">6</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1342308608</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components/>
+		</object>
+		<object type="TALabel" name="lblSetXYPos">
+			<properties>
+				<property name="Left" vt="Int8">120</property>
+				<property name="Top" vt="Int8">4</property>
+				<property name="Width" vt="Int8">56</property>
+				<property name="Height" vt="Int8">17</property>
+				<property name="Caption" vt="String">x - Set X/Y</property>
+				<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-12</property>
+				<property name="Font.Name" vt="String">MS Sans Serif</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">7</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1342308608</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components/>
+		</object>
+		<object type="TALabel" name="lblStartClicking">
+			<properties>
+				<property name="Left" vt="Int16">184</property>
+				<property name="Top" vt="Int8">4</property>
+				<property name="Width" vt="Int8">80</property>
+				<property name="Height" vt="Int8">17</property>
+				<property name="Caption" vt="String">c - Start clicking</property>
+				<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-12</property>
+				<property name="Font.Name" vt="String">MS Sans Serif</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">8</property>
 				<property name="HaveVariable" vt="False">False</property>
 				<property name="CtrlStyle" vt="Int32">1342308608</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
