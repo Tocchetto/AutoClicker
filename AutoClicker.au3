@@ -43,6 +43,7 @@ EndFunc
 Func DefineClickPos()
 	$g_aClickPos = MouseGetPos()
 	ConsoleLog("Defining click position. Position picked: x(" & $g_aClickPos[0] & "), y(" & $g_aClickPos[1] & ").")
+	GUICtrlSetData($lblDelay, $g_sClickDelayLbl & " (" & $g_aClickPos[0] & "," & $g_aClickPos[1] & ")")
 EndFunc
 
 Func AutoClick()

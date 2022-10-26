@@ -22,8 +22,10 @@ GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
 Global $g_bContinue = False
-Global $g_aClickPos[2]
+Global $g_aClickPos[2] = [0, 1]
 Global $g_iDelay = 20
 Global $g_sXYPosLbl = "X/Y:"
+Global $g_sClickDelayLbl = "Click delay:"
 
 GUICtrlSetData($lblCoordinates, $g_sXYPosLbl & " " & $g_iDelay)
+GUICtrlSetData($lblDelay, $g_sClickDelayLbl & " (" & $g_aClickPos[0] & "," & $g_aClickPos[1] & ")")
