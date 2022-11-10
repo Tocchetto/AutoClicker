@@ -103,7 +103,7 @@
 			<properties>
 				<property name="Left" vt="Int8">8</property>
 				<property name="Top" vt="Int16">236</property>
-				<property name="Width" vt="Int8">114</property>
+				<property name="Width" vt="Int16">138</property>
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">X/Y:</property>
 				<property name="TabOrder" vt="Int8">4</property>
@@ -118,7 +118,7 @@
 			<properties>
 				<property name="Left" vt="Int8">8</property>
 				<property name="Top" vt="Int16">252</property>
-				<property name="Width" vt="Int8">114</property>
+				<property name="Width" vt="Int16">138</property>
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">Click delay:</property>
 				<property name="TabOrder" vt="Int8">5</property>

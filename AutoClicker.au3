@@ -2,20 +2,20 @@
 #include "LogManager.au3"
 
 HotKeySet("{ESC}", "Stop")
-HotKeySet("z", "Pause")
-HotKeySet("c", "AutoClick")
+HotKeySet("z", "HandleBtnPause")
+HotKeySet("c", "HandleBtnStart")
 HotKeySet("x", "DefineClickPos")
 HotKeySet("o", "SpeedUp")
 HotKeySet("l", "SpeedDown")
 
 Func Pause()
-   ConsoleLog("Pause was pressed.")
-   $g_bContinue = False
+	ConsoleLog("Pause was pressed.")
+	$g_bContinue = False
 EndFunc
 
 Func Stop()
-   ConsoleLog("Stop was pressed.")
-   Exit 1
+	ConsoleLog("Stop was pressed.")
+	Exit 1
 EndFunc
 
 Func SpeedUp()
@@ -68,19 +68,38 @@ Func OpenHelpWindow()
 	MsgBox(64, "HotKeys", $sMsg)	
 EndFunc
 
+Func HandleBtnStart()
+	ConsoleLog("Start button pressed.")
+	
+	GUICtrlSetState($btnPause, $GUI_ENABLE)
+	GUICtrlSetState($btnStart, $GUI_DISABLE)
+	AutoClick()
+EndFunc
+
+Func HandleBtnHelp()
+	ConsoleLog("Help button pressed.")
+	
+	OpenHelpWindow()
+EndFunc
+
+Func HandleBtnPause()
+	ConsoleLog("Pause button pressed.")
+	GUICtrlSetState($btnStart, $GUI_ENABLE)
+	GUICtrlSetState($btnPause, $GUI_DISABLE)
+	
+	Pause()
+EndFunc
+
 While 1
 	$iMsg = GUIGetMsg()
 	Switch $iMsg
 		Case $GUI_EVENT_CLOSE
 			Exit
-		Case $btnStart
-			ConsoleLog("Start button pressed.")
-			AutoClick()
+		Case $btnStart			
+			HandleBtnStart()
 		Case $btnHelp
-			ConsoleLog("Help button pressed.")
-			OpenHelpWindow()
+			HandleBtnHelp()
 		Case $btnPause
-			ConsoleLog("Pause button pressed.")
-			Pause()
+			HandleBtnPause()
 	EndSwitch
 WEnd
